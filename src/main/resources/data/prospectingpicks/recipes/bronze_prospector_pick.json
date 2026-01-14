@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "tools",
+	"key": {
+		"a": {
+			"tag": "forge:ingots/bronze"
+		},
+		"c": {
+			"item": "minecraft:stick"
+		}
+	},
+	"pattern": [
+	"aaa",
+	" ca",
+	" c "
+	],
+	"result": {
+		"item": "prospectingpicks:bronze_prospector_pick"
+	}
+}

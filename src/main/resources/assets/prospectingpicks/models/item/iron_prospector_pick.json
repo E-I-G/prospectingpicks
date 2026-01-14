@@ -1,0 +1,6 @@
+{
+  "parent": "item/handheld",
+  "textures": {
+    "layer0": "prospectingpicks:item/iron_prospector_pick"
+  }
+}

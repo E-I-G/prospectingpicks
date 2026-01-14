@@ -1,0 +1,21 @@
+{
+  "item.prospectingpicks.copper_prospector_pick": "Copper Prospector's Pick",
+  "item.prospectingpicks.bronze_prospector_pick": "Bronze Prospector's Pick",
+  "item.prospectingpicks.silver_prospector_pick": "Silver Prospector's Pick",
+  "item.prospectingpicks.iron_prospector_pick": "Iron Prospector's Pick",
+  "item.prospectingpicks.steel_prospector_pick": "Steel Prospector's Pick",
+  "item.prospectingpicks.diamond_prospector_pick": "Diamond Prospector's Pick",
+  "item.prospectingpicks.netherite_prospector_pick": "Netherite Prospector's Pick",
+
+  "prospectingpicks.message.no_results": "Did not find any traces of ore in vicinity",
+  "prospectingpicks.message.found_ore_cluster_0": "Found trace amounts of %1$s",
+  "prospectingpicks.message.found_ore_cluster_1": "Found moderate amounts of %1$s",
+  "prospectingpicks.message.found_ore_cluster_2": "Found large amounts of %1$s",
+  "prospectingpicks.message.found_ore_cluster_3": "Found massive amounts of %1$s",
+  "prospectingpicks.message.found_ore_cluster_4": "Found extraordinary amounts of %1$s",
+  "prospectingpicks.message.found_ore_cluster_numeric": "Found %2$s %1$s ore",
+  "prospectingpicks.message.found_ore_vein_0": "Found vein of %1$s",
+  "prospectingpicks.message.found_ore_vein_1": "Found large vein of %1$s",
+  "prospectingpicks.message.found_ore_vein_2": "Found enormous vein of %1$s",
+  "prospectingpicks.message.found_ore_vein_numeric": "Found a vein of %1$s - %2$s ore blocks, %3$s raw blocks"
+}

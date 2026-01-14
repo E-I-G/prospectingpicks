@@ -1,0 +1,12 @@
+{
+	"replace": false,
+	"values": [
+		"prospectingpicks:copper_prospector_pick",
+		"prospectingpicks:iron_prospector_pick",
+		"prospectingpicks:bronze_prospector_pick",
+		"prospectingpicks:silver_prospector_pick",
+		"prospectingpicks:steel_prospector_pick",
+		"prospectingpicks:diamond_prospector_pick",
+		"prospectingpicks:netherite_prospector_pick"
+	]
+}

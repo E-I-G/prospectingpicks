@@ -1,0 +1,20 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"category": "tools",
+	"key": {
+		"a": {
+			"tag": "forge:ingots/steel"
+		},
+		"c": {
+			"item": "minecraft:stick"
+		}
+	},
+	"pattern": [
+	"aaa",
+	" ca",
+	" c "
+	],
+	"result": {
+		"item": "prospectingpicks:steel_prospector_pick"
+	}
+}
