@@ -1,6 +1,6 @@
 package eig.prospectingpicks;
 
-import eig.prospectingpicks.util.OreTagPair;
+import eig.prospectingpicks.util.OreTagConfig;
 
 import net.minecraftforge.common.ForgeConfigSpec;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -34,6 +34,10 @@ public class Config {
 	private static final ForgeConfigSpec.IntValue SEARCH_RADIUS = BUILDER
 			.comment("Spherical ore search radius")
 			.defineInRange("searchRadius", 7, 1, 32);
+
+	private static final ForgeConfigSpec.IntValue THRESHOLD_CLUSTER_0 = BUILDER
+			.comment("Cluster threshold 0 - min number of ores found for detection")
+			.defineInRange("clusterThreshold0", 1, 1, Integer.MAX_VALUE);
 
 	private static final ForgeConfigSpec.IntValue THRESHOLD_CLUSTER_1 = BUILDER
 		.comment("Cluster threshold 1 - labeled as moderate amounts")
@@ -77,22 +81,35 @@ public class Config {
 
 
 	private static final ForgeConfigSpec.ConfigValue<List<? extends String>> ORE_STRINGS = BUILDER
-			.comment("A list of ore tags to search for. Format: ore;raw_ore")
+			.comment("A list of ore tags to search for. Format: ore_tag;raw_ore_tag;[canonical_block_id];is_treasure. canonical_block_id is used to optionally fetch the translation key.")
 			.defineListAllowEmpty("ores", Arrays.asList(
-					"coal;coal",
-					"diamond;diamond",
-					"lapis;lapis",
-					"emerald;emerald",
-					"iron;raw_iron",
-					"redstone;redstone",
-					"gold;raw_gold",
-					"copper;raw_copper",
-					"silver;raw_silver",
-					"platinum;raw_platinum",
-					"uranium;raw_uranium",
-					"tin;raw_tin",
-					"zinc;raw_zinc",
-					"aluminum;raw_aluminum"
+					"coal;coal;;false",
+					"diamond;diamond;;true",
+					"lapis;lapis;;false",
+					"emerald;emerald;;true",
+					"iron;raw_iron;;false",
+					"redstone;redstone;;false",
+					"gold;raw_gold;;false",
+					"copper;raw_copper;;false",
+					"quartz;quartz;;false",
+					"netherite_scrap;netherite;;true",
+					"silver;raw_silver;;false",
+					"platinum;raw_platinum;;true",
+					"uranium;raw_uranium;;false",
+					"tin;raw_tin;;false",
+					"zinc;raw_zinc;;false",
+					"aluminum;raw_aluminum;;false",
+					"sapphire;sapphire;;true",
+					"ruby;ruby;;false",
+					"tungsten;raw_tungsten;;false",
+					"osmium;raw_osmium;;false",
+					"bismuth;raw_bismuth;;false",
+					"fluorite;fluorite;;false",
+					"nickel;raw_nickel;;false",
+					"sulfur;sulfur;;false",
+					"niter;niter;;false",
+					"cinnabar;cinnabar;;false",
+					"apatite;apatite;;false"
 			), Config::validateOreListValue);
 
 
@@ -106,6 +123,7 @@ public class Config {
 
 	public static int searchRadius;
 
+	public static int clusterThreshold0;
 	public static int clusterThreshold1;
 	public static int clusterThreshold2;
 	public static int clusterThreshold3;
@@ -118,11 +136,11 @@ public class Config {
 	public static int veinThreshold2_rawOre;
 	public static int veinThreshold2_ore;
 
-	public static Set<OreTagPair> ores;
+	public static Set<OreTagConfig> ores;
 
 
 	private static boolean validateOreListValue(final Object obj) {
-		return obj instanceof final String entry && StringUtils.countMatches(entry, ';') == 1;
+		return obj instanceof final String entry && StringUtils.countMatches(entry, ';') >= 1;
 	}
 
 	@SubscribeEvent
@@ -135,6 +153,7 @@ public class Config {
 
 		searchRadius = SEARCH_RADIUS.get();
 
+		clusterThreshold0 = THRESHOLD_CLUSTER_0.get();
 		clusterThreshold1 = THRESHOLD_CLUSTER_1.get();
 		clusterThreshold2 = THRESHOLD_CLUSTER_2.get();
 		clusterThreshold3 = THRESHOLD_CLUSTER_3.get();
@@ -149,10 +168,10 @@ public class Config {
 
 		List<? extends String> itemStrings = ORE_STRINGS.get();
 
-		ores = new HashSet<OreTagPair>();
+		ores = new HashSet<OreTagConfig>();
 		itemStrings.forEach((String value) -> {
-			if (StringUtils.countMatches(value, ';') == 1) {
-				ores.add(new OreTagPair(value));
+			if (StringUtils.countMatches(value, ';') >= 1) {
+				ores.add(new OreTagConfig(value));
 			}
 		});
 	}

@@ -1,8 +1,9 @@
 package eig.prospectingpicks;
 
 import com.mojang.logging.LogUtils;
+import eig.prospectingpicks.events.ModEvents;
+import eig.prospectingpicks.events.ServerEvents;
 import eig.prospectingpicks.registry.ModItems;
-import eig.prospectingpicks.ModEvents;
 
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.eventbus.api.IEventBus;

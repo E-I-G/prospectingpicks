@@ -1,5 +1,7 @@
-package eig.prospectingpicks;
+package eig.prospectingpicks.events;
 
+import eig.prospectingpicks.Config;
+import eig.prospectingpicks.ProspectingPicks;
 import eig.prospectingpicks.registry.ModItems;
 
 import net.minecraft.world.item.CreativeModeTabs;
