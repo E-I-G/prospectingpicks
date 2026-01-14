@@ -1,26 +1,19 @@
 package eig.prospectingpicks;
 
-import eig.prospectingpicks.registry.ModItems;
-
 import eig.prospectingpicks.util.ModTags;
-import eig.prospectingpicks.util.OreTagPair;
+import eig.prospectingpicks.util.OreTagConfig;
 import net.minecraft.core.BlockPos;
-import net.minecraft.network.chat.Style;
 import net.minecraft.ChatFormatting;
-import net.minecraft.network.chat.contents.TranslatableContents;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.tags.TagKey;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.CreativeModeTabs;
 
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.Tags;
-import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.level.BlockEvent.BreakEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -36,6 +29,10 @@ class OreCounter {
 		this.ore = ore;
 		this.rawOre = rawOre;
 	}
+
+	public String getOreName() {
+		return this.ore.replace('_', ' ');
+	}
 }
 
 @Mod.EventBusSubscriber(modid = "mymod", bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.DEDICATED_SERVER)
@@ -44,7 +41,7 @@ public class ServerEvents {
 		OreCounter[] oreCounter = new OreCounter[Config.ores.size()];
 
 		int i = 0;
-		for (OreTagPair pair : Config.ores) {
+		for (OreTagConfig pair : Config.ores) {
 			oreCounter[i] = new OreCounter(pair.ore, pair.rawOre);
 			i++;
 		}
@@ -93,7 +90,7 @@ public class ServerEvents {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_vein_numeric",
-									cnt.ore,
+									cnt.getOreName(),
 									String.valueOf(cnt.count),
 									String.valueOf(cnt.rawCount)
 							).withStyle(ChatFormatting.YELLOW)
@@ -102,25 +99,25 @@ public class ServerEvents {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_vein_2",
-									cnt.ore
+									cnt.getOreName()
 							).withStyle(ChatFormatting.YELLOW).withStyle(ChatFormatting.BOLD)
 					);
 				} else if (cnt.rawCount >= Config.veinThreshold1_rawOre && cnt.count >= Config.veinThreshold1_ore) {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_vein_1",
-									cnt.ore
+									cnt.getOreName()
 							).withStyle(ChatFormatting.YELLOW)
 					);
 				} else {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_vein_0",
-									cnt.ore
+									cnt.getOreName()
 							).withStyle(ChatFormatting.YELLOW)
 					);
 				}
-			} else if (cnt.count > 0) {
+			} else if (cnt.count >= Config.clusterThreshold0) {
 				// Found a regular ore cluster
 				foundSomething = true;
 
@@ -128,7 +125,7 @@ public class ServerEvents {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_cluster_numeric",
-									cnt.ore,
+									cnt.getOreName(),
 									String.valueOf(cnt.count)
 							).withStyle(ChatFormatting.GOLD)
 					);
@@ -136,35 +133,35 @@ public class ServerEvents {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_cluster_4",
-									cnt.ore
+									cnt.getOreName()
 							).withStyle(ChatFormatting.GOLD).withStyle(ChatFormatting.BOLD)
 					);
 				}  else if (cnt.count >= Config.clusterThreshold3) {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_cluster_3",
-									cnt.ore
+									cnt.getOreName()
 							).withStyle(ChatFormatting.GOLD)
 					);
 				} else if (cnt.count >= Config.clusterThreshold2) {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_cluster_2",
-									cnt.ore
+									cnt.getOreName()
 							).withStyle(ChatFormatting.GOLD)
 					);
 				} else if (cnt.count >= Config.clusterThreshold1) {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_cluster_1",
-									cnt.ore
+									cnt.getOreName()
 							).withStyle(ChatFormatting.WHITE)
 					);
 				} else {
 					player.sendSystemMessage(
 							Component.translatable(
 									"prospectingpicks.message.found_ore_cluster_0",
-									cnt.ore
+									cnt.getOreName()
 							).withStyle(ChatFormatting.WHITE)
 					);
 				}
