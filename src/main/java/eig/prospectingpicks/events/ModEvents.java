@@ -25,13 +25,13 @@ public class ModEvents {
 
 			event.accept(ModItems.NETHERITE_PROSPECTOR_PICK);
 
-			if (Config.enableTierSilver)
+			if (Config.ENABLE_SILVER_TOOL.get())
 				event.accept(ModItems.SILVER_PROSPECTOR_PICK);
 
-			if (Config.enableTierBronze)
+			if (Config.ENABLE_BRONZE_TOOL.get())
 				event.accept(ModItems.BRONZE_PROSPECTOR_PICK);
 
-			if (Config.enableTierSteel)
+			if (Config.ENABLE_STEEL_TOOL.get())
 				event.accept(ModItems.STEEL_PROSPECTOR_PICK);
 		}
 	}

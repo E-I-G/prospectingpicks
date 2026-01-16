@@ -15,12 +15,12 @@ public class OreTagConfig {
 
 	public boolean isTreasure;
 
-	private String getTranslationKey(String ore) {
-		Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.parse(ore));
+	private String getTranslationKey(String block_id) {
+		Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.parse(block_id));
 		if (block != null) {
 			return block.getDescriptionId();
 		} else {
-			return getFallbackTranslationKey(ore);
+			return getFallbackTranslationKey(block_id);
 		}
 	}
 
@@ -54,7 +54,7 @@ public class OreTagConfig {
 		this.ore = sp[0];
 		this.rawOre = sp[1];
 		if (sp.length > 2 && sp[2].length() > 1) {
-			this.translationKey = sp[2];
+			this.translationKey = getTranslationKey(sp[2]);
 		} else {
 			this.translationKey = getFallbackTranslationKey(this.ore);
 		}

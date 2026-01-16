@@ -9,12 +9,15 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.state.BlockState;
 
+import java.util.Set;
+
 public class OreSearch {
 	private static OreCounter[] makeOreCounter() {
-		OreCounter[] oreCounter = new OreCounter[Config.ores.size()];
+		Set<OreTagConfig> ores = Config.getOres();
+		OreCounter[] oreCounter = new OreCounter[ores.size()];
 
 		int i = 0;
-		for (OreTagConfig ore : Config.ores) {
+		for (OreTagConfig ore : ores) {
 			oreCounter[i] = new OreCounter(ore);
 			i++;
 		}
@@ -39,22 +42,24 @@ public class OreSearch {
 		player.sendSystemMessage(msg);
 	}
 
-	private static void sendOreMessageNumeric(Player player, String tlKey, OreCounter cnt) {
+	private static void sendOreMessageNumeric(Player player, OreCounter cnt) {
 		Component msg = Component.translatable(
-				tlKey,
-				String.valueOf(cnt.count),
-				getOreTextComponent(cnt)
+				"prospectingpicks.message.found_ore_cluster_numeric",
+				getOreTextComponent(cnt),
+				String.valueOf(cnt.count)
+
 		).withStyle(ChatFormatting.GOLD);
 
 		player.sendSystemMessage(msg);
 	}
 
-	private static void sendOreVeinMessageNumeric(Player player, String tlKey, OreCounter cnt) {
+	private static void sendOreVeinMessageNumeric(Player player, OreCounter cnt) {
 		Component msg = Component.translatable(
-				tlKey,
+				"prospectingpicks.message.found_ore_vein_numeric",
+				getOreTextComponent(cnt),
 				String.valueOf(cnt.count),
-				String.valueOf(cnt.rawCount),
-				getOreTextComponent(cnt)
+				String.valueOf(cnt.rawCount)
+
 		).withStyle(ChatFormatting.GOLD);
 
 		player.sendSystemMessage(msg);
@@ -71,7 +76,7 @@ public class OreSearch {
 					int dx = x - pos.getX();
 					int dy = y - pos.getY();
 					int dz = z - pos.getZ();
-					if (dx*dx + dy*dy + dz*dz <= r2) {
+					if (dx * dx + dy * dy + dz * dz <= r2) {
 						BlockState block = level.getBlockState(new BlockPos(x, y, z));
 						for (OreCounter cnt : oreCount) {
 							if (block.is(ModTags.blockTag(ResourceLocation.parse("forge:ores/" + cnt.ore.ore)))) {
@@ -93,32 +98,32 @@ public class OreSearch {
 		);
 
 		for (OreCounter cnt : oreCount) {
-			if (cnt.rawCount >= Config.veinThreshold0_rawOre && cnt.count >= Config.veinThreshold0_ore) {
+			if (cnt.rawCount >= Config.THRESHOLD_VEIN_0_RAWORE.get() && cnt.count >= Config.THRESHOLD_VEIN_0_ORE.get()) {
 				// Found a vein!
 				foundSomething = true;
 
-				if (Config.displayNumericCount) {
-					sendOreVeinMessageNumeric(player, "prospectingpicks.message.found_ore_vein_numeric", cnt);
-				} else if (cnt.rawCount >= Config.veinThreshold2_rawOre && cnt.count >= Config.veinThreshold2_ore) {
+				if (Config.DISPLAY_NUMERIC_COUNT.get()) {
+					sendOreVeinMessageNumeric(player, cnt);
+				} else if (cnt.rawCount >= Config.THRESHOLD_VEIN_2_RAWORE.get() && cnt.count >= Config.THRESHOLD_VEIN_2_ORE.get()) {
 					sendOreMessage(player, "prospectingpicks.message.found_ore_vein_2", cnt, ChatFormatting.YELLOW);
-				} else if (cnt.rawCount >= Config.veinThreshold1_rawOre && cnt.count >= Config.veinThreshold1_ore) {
+				} else if (cnt.rawCount >= Config.THRESHOLD_VEIN_1_RAWORE.get() && cnt.count >= Config.THRESHOLD_VEIN_1_ORE.get()) {
 					sendOreMessage(player, "prospectingpicks.message.found_ore_vein_1", cnt, ChatFormatting.YELLOW);
 				} else {
 					sendOreMessage(player, "prospectingpicks.message.found_ore_vein_0", cnt, ChatFormatting.YELLOW);
 				}
-			} else if (cnt.count >= Config.clusterThreshold0) {
+			} else if (cnt.count >= Config.THRESHOLD_CLUSTER_0.get()) {
 				// Found a regular ore cluster
 				foundSomething = true;
 
-				if (Config.displayNumericCount) {
-					sendOreMessageNumeric(player, "prospectingpicks.message.found_ore_cluster_numeric", cnt);
-				} else if (cnt.count >= Config.clusterThreshold4) {
+				if (Config.DISPLAY_NUMERIC_COUNT.get()) {
+					sendOreMessageNumeric(player, cnt);
+				} else if (cnt.count >= Config.THRESHOLD_CLUSTER_4.get()) {
 					sendOreMessage(player, "prospectingpicks.message.found_ore_cluster_4", cnt, ChatFormatting.GOLD);
-				}  else if (cnt.count >= Config.clusterThreshold3) {
+				} else if (cnt.count >= Config.THRESHOLD_CLUSTER_3.get()) {
 					sendOreMessage(player, "prospectingpicks.message.found_ore_cluster_3", cnt, ChatFormatting.GOLD);
-				} else if (cnt.count >= Config.clusterThreshold2) {
+				} else if (cnt.count >= Config.THRESHOLD_CLUSTER_2.get()) {
 					sendOreMessage(player, "prospectingpicks.message.found_ore_cluster_2", cnt, ChatFormatting.GOLD);
-				} else if (cnt.count >= Config.clusterThreshold1) {
+				} else if (cnt.count >= Config.THRESHOLD_CLUSTER_1.get()) {
 					sendOreMessage(player, "prospectingpicks.message.found_ore_cluster_1", cnt, ChatFormatting.WHITE);
 				} else {
 					sendOreMessage(player, "prospectingpicks.message.found_ore_cluster_0", cnt, ChatFormatting.WHITE);
@@ -132,5 +137,4 @@ public class OreSearch {
 			);
 		}
 	}
-
 }

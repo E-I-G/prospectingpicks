@@ -54,17 +54,4 @@ public class ModItems {
 			"netherite_prospector_pick",
 			() -> new PickaxeItem(ModTiers.NETHERITE_PROSP, 1, 1.2f, new Item.Properties())
 	);
-
-	@SubscribeEvent
-	public static void addCreative(BuildCreativeModeTabContentsEvent event) {
-		if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
-			event.accept(COPPER_PROSPECTOR_PICK);
-			event.accept(SILVER_PROSPECTOR_PICK);
-			event.accept(IRON_PROSPECTOR_PICK);
-			event.accept(BRONZE_PROSPECTOR_PICK);
-			event.accept(STEEL_PROSPECTOR_PICK);
-			event.accept(DIAMOND_PROSPECTOR_PICK);
-			event.accept(NETHERITE_PROSPECTOR_PICK);
-		}
-	}
 }

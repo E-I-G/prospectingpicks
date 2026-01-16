@@ -13,7 +13,7 @@
   "prospectingpicks.message.found_ore_cluster_2": "Found large amounts of %1$s",
   "prospectingpicks.message.found_ore_cluster_3": "Found massive amounts of %1$s",
   "prospectingpicks.message.found_ore_cluster_4": "Found extraordinary amounts of %1$s",
-  "prospectingpicks.message.found_ore_cluster_numeric": "Found %2$s %1$s ore",
+  "prospectingpicks.message.found_ore_cluster_numeric": "Found %2$s %1$s",
   "prospectingpicks.message.found_ore_vein_0": "Found vein of %1$s",
   "prospectingpicks.message.found_ore_vein_1": "Found large vein of %1$s",
   "prospectingpicks.message.found_ore_vein_2": "Found enormous vein of %1$s",

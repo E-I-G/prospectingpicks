@@ -81,6 +81,6 @@ public class ModTiers {
 			4,
 			5,
 			NEEDS_NETHERITE_TOOL,
-			() -> Ingredient.of(Items.DIAMOND)
+			() -> Ingredient.of(Items.NETHERITE_INGOT)
 	);
 }

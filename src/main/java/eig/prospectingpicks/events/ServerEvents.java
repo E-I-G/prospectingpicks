@@ -24,7 +24,7 @@ import net.minecraftforge.fml.common.Mod;
 import static eig.prospectingpicks.util.OreSearch.oreSearch;
 
 
-@Mod.EventBusSubscriber(modid = "mymod", bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.DEDICATED_SERVER)
+@Mod.EventBusSubscriber(modid = "prospectingpicks", bus = Mod.EventBusSubscriber.Bus.FORGE, value = Dist.DEDICATED_SERVER)
 public class ServerEvents {
 
 	@SubscribeEvent
@@ -34,7 +34,7 @@ public class ServerEvents {
 		Player player = event.getPlayer();
 		if (player.getMainHandItem().is(ModTags.PROSPECTING_PICK)) {
 			if (block.is(Tags.Blocks.STONE) || block.is(Tags.Blocks.END_STONES) || block.is(BlockTags.BASE_STONE_OVERWORLD) || block.is(BlockTags.BASE_STONE_NETHER)) {
-				oreSearch(event.getPos(), event.getLevel(), player, Config.searchRadius);
+				oreSearch(event.getPos(), event.getLevel(), player, Config.SEARCH_RADIUS.get());
 			}
 		}
 	}
