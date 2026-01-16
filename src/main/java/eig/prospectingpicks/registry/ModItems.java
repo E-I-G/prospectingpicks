@@ -22,36 +22,36 @@ public class ModItems {
 
 	public static final RegistryObject<Item> COPPER_PROSPECTOR_PICK = ITEMS.register(
 			"copper_prospector_pick",
-			() -> new PickaxeItem(ModTiers.COPPER_PROSP, 1, 1.2f, new Item.Properties())
+			() -> new PickaxeItem(ModTiers.COPPER_PROSP, 1, -2.8f, new Item.Properties())
 	);
 
 	public static final RegistryObject<Item> SILVER_PROSPECTOR_PICK = ITEMS.register(
 			"silver_prospector_pick",
-			() -> new PickaxeItem(ModTiers.SILVER_PROSP, 1, 1.2f, new Item.Properties())
+			() -> new PickaxeItem(ModTiers.SILVER_PROSP, 1, -2.8f, new Item.Properties())
 	);
 
 	public static final RegistryObject<Item> IRON_PROSPECTOR_PICK = ITEMS.register(
 			"iron_prospector_pick",
-			() -> new PickaxeItem(ModTiers.IRON_PROSP, 1, 1.2f, new Item.Properties())
+			() -> new PickaxeItem(ModTiers.IRON_PROSP, 1, -2.8f, new Item.Properties())
 	);
 
 	public static final RegistryObject<Item> BRONZE_PROSPECTOR_PICK = ITEMS.register(
 			"bronze_prospector_pick",
-			() -> new PickaxeItem(ModTiers.BRONZE_PROSP, 1, 1.2f, new Item.Properties())
+			() -> new PickaxeItem(ModTiers.BRONZE_PROSP, 1, -2.8f, new Item.Properties())
 	);
 
 	public static final RegistryObject<Item> STEEL_PROSPECTOR_PICK = ITEMS.register(
 			"steel_prospector_pick",
-			() -> new PickaxeItem(ModTiers.STEEL_PROSP, 1, 1.2f, new Item.Properties())
+			() -> new PickaxeItem(ModTiers.STEEL_PROSP, 1, -2.8f, new Item.Properties())
 	);
 
 	public static final RegistryObject<Item> DIAMOND_PROSPECTOR_PICK = ITEMS.register(
 			"diamond_prospector_pick",
-			() -> new PickaxeItem(ModTiers.DIAMOND_PROSP, 1, 1.2f, new Item.Properties())
+			() -> new PickaxeItem(ModTiers.DIAMOND_PROSP, 1, -2.8f, new Item.Properties())
 	);
 
 	public static final RegistryObject<Item> NETHERITE_PROSPECTOR_PICK = ITEMS.register(
 			"netherite_prospector_pick",
-			() -> new PickaxeItem(ModTiers.NETHERITE_PROSP, 1, 1.2f, new Item.Properties())
+			() -> new PickaxeItem(ModTiers.NETHERITE_PROSP, 1, -2.8f, new Item.Properties())
 	);
 }
