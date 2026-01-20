@@ -1,10 +1,12 @@
 package eig.prospectingpicks.util;
 
-import javax.annotation.Nullable;
-
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
-import net.minecraftforge.registries.ForgeRegistries;
+import net.neoforged.neoforge.registries.NeoForgeRegistries;
+
+import javax.annotation.Nullable;
+import java.util.Optional;
 
 public class OreTagConfig {
 	public final String ore;
@@ -15,13 +17,9 @@ public class OreTagConfig {
 
 	public boolean isTreasure;
 
-	private String getTranslationKey(String block_id) {
-		Block block = ForgeRegistries.BLOCKS.getValue(ResourceLocation.parse(block_id));
-		if (block != null) {
-			return block.getDescriptionId();
-		} else {
-			return getFallbackTranslationKey(block_id);
-		}
+	private String getTranslationKey(String ore) {
+		Optional<Block> block = BuiltInRegistries.BLOCK.getOptional(ResourceLocation.parse(ore));
+		return block.map(Block::getDescriptionId).orElseGet(() -> getFallbackTranslationKey(ore));
 	}
 
 	private String getFallbackTranslationKey(String ore) {

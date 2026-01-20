@@ -17,5 +17,23 @@
   "prospectingpicks.message.found_ore_vein_0": "Found vein of %1$s",
   "prospectingpicks.message.found_ore_vein_1": "Found large vein of %1$s",
   "prospectingpicks.message.found_ore_vein_2": "Found enormous vein of %1$s",
-  "prospectingpicks.message.found_ore_vein_numeric": "Found a vein of %1$s - %2$s ore blocks, %3$s raw blocks"
+  "prospectingpicks.message.found_ore_vein_numeric": "Found a vein of %1$s - %2$s ore blocks, %3$s raw blocks",
+
+  "prospectingpicks.configuration.enableTierSilver": "Enable Silver tools",
+  "prospectingpicks.configuration.enableTierBronze": "Enable Bronze tools",
+  "prospectingpicks.configuration.enableTierSteel": "Enable Steel tools",
+  "prospectingpicks.configuration.displayNumericCount": "Numeric ore count",
+  "prospectingpicks.configuration.searchRadius": "Search radius",
+  "prospectingpicks.configuration.clusterThreshold0": "Cluster threshold 0",
+  "prospectingpicks.configuration.clusterThreshold1": "Cluster threshold 1",
+  "prospectingpicks.configuration.clusterThreshold2": "Cluster threshold 2",
+  "prospectingpicks.configuration.clusterThreshold3": "Cluster threshold 3",
+  "prospectingpicks.configuration.clusterThreshold4": "Cluster threshold 4",
+  "prospectingpicks.configuration.veinThreshold0_ore": "Vein threshold 0 - ore",
+  "prospectingpicks.configuration.veinThreshold1_ore": "Vein threshold 1 - ore",
+  "prospectingpicks.configuration.veinThreshold2_ore": "Vein threshold 2 - ore",
+  "prospectingpicks.configuration.veinThreshold0_rawOre": "Vein threshold 0 - raw ore",
+  "prospectingpicks.configuration.veinThreshold1_rawOre": "Vein threshold 1 - raw ore",
+  "prospectingpicks.configuration.veinThreshold2_rawOre": "Vein threshold 2 - raw ore",
+  "prospectingpicks.configuration.ores": "Ores to search for"
 }

@@ -7,80 +7,73 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.Tier;
 import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraftforge.common.ForgeTier;
-import net.minecraftforge.common.Tags;
-import net.minecraftforge.common.data.ForgeItemTagsProvider;
 
-import static net.minecraftforge.common.Tags.Blocks.NEEDS_NETHERITE_TOOL;
+import net.neoforged.neoforge.common.SimpleTier;
+import net.neoforged.neoforge.common.Tags;
+
 
 public class ModTiers {
-	public static final Tier COPPER_PROSP = new ForgeTier(
-			1,
+	public static final Tier COPPER_PROSP = new SimpleTier(
+			BlockTags.INCORRECT_FOR_STONE_TOOL,
 			95,
-			2,
-			1,
+			2f,
+			1f,
 			5,
-			BlockTags.NEEDS_STONE_TOOL,
 			() -> Ingredient.of(Tags.Items.INGOTS_COPPER)
 	);
 
-	public static final Tier SILVER_PROSP = new ForgeTier(
-			2,
+	public static final Tier SILVER_PROSP = new SimpleTier(
+			BlockTags.INCORRECT_FOR_IRON_TOOL,
 			125,
-			3,
-			2,
+			3f,
+			2f,
 			5,
-			BlockTags.NEEDS_IRON_TOOL,
 			() -> Ingredient.of(ItemTags.create(ResourceLocation.parse("forge:ingots/silver")))
 	);
 
-	public static final Tier IRON_PROSP = new ForgeTier(
-			2,
+	public static final Tier IRON_PROSP = new SimpleTier(
+			BlockTags.INCORRECT_FOR_IRON_TOOL,
 			125,
-			3,
-			2,
+			3f,
+			2f,
 			5,
-			BlockTags.NEEDS_IRON_TOOL,
 			() -> Ingredient.of(Tags.Items.INGOTS_IRON)
 	);
 
-	public static final Tier STEEL_PROSP = new ForgeTier(
-			2,
+	public static final Tier STEEL_PROSP = new SimpleTier(
+			BlockTags.INCORRECT_FOR_IRON_TOOL,
 			190,
-			3,
-			2,
+			3f,
+			2f,
 			5,
-			BlockTags.NEEDS_IRON_TOOL,
 			() -> Ingredient.of(ItemTags.create(ResourceLocation.parse("forge:ingots/steel")))
 	);
 
-	public static final Tier BRONZE_PROSP = new ForgeTier(
-			2,
+	public static final Tier BRONZE_PROSP = new SimpleTier(
+			BlockTags.INCORRECT_FOR_IRON_TOOL,
 			105,
-			2,
-			2,
+			2f,
+			2f,
 			5,
-			BlockTags.NEEDS_IRON_TOOL,
 			() -> Ingredient.of(ItemTags.create(ResourceLocation.parse("forge:ingots/bronze")))
 	);
 
-	public static final Tier DIAMOND_PROSP = new ForgeTier(
-			3,
+	public static final Tier DIAMOND_PROSP = new SimpleTier(
+			BlockTags.INCORRECT_FOR_DIAMOND_TOOL,
 			400,
-			4,
-			3,
+			4f,
+			3f,
 			5,
-			BlockTags.NEEDS_DIAMOND_TOOL,
 			() -> Ingredient.of(Items.DIAMOND)
 	);
 
-	public static final Tier NETHERITE_PROSP = new ForgeTier(
-			4,
+	public static final Tier NETHERITE_PROSP = new SimpleTier(
+			BlockTags.INCORRECT_FOR_NETHERITE_TOOL,
 			550,
 			5,
 			4,
 			5,
-			NEEDS_NETHERITE_TOOL,
 			() -> Ingredient.of(Items.NETHERITE_INGOT)
 	);
+
 }
