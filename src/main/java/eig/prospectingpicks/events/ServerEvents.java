@@ -14,7 +14,7 @@ import net.neoforged.neoforge.event.level.BlockEvent;
 
 import static eig.prospectingpicks.util.OreSearch.oreSearch;
 
-@Mod(value = ProspectingPicks.MODID, dist = Dist.CLIENT)
+@Mod(value = ProspectingPicks.MODID)
 public class ServerEvents {
 	@SubscribeEvent
 	public static void blockBroken(BlockEvent.BreakEvent event) {
