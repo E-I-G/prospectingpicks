@@ -7,7 +7,7 @@
     "item": "prospectingpicks:diamond_prospector_pick"
   },
   "result": {
-    "item": "prospectingpicks:netherite_prospector_pick"
+    "id": "prospectingpicks:netherite_prospector_pick"
   },
   "template": {
     "item": "minecraft:netherite_upgrade_smithing_template"

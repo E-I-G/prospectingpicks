@@ -3,7 +3,7 @@
 	"category": "tools",
 	"key": {
 		"a": {
-			"tag": "forge:ingots/silver"
+			"tag": "forge:ingots/bronze"
 		},
 		"c": {
 			"item": "minecraft:stick"
@@ -15,6 +15,6 @@
 	" c "
 	],
 	"result": {
-		"item": "prospectingpicks:silver_prospector_pick"
+		"id": "prospectingpicks:bronze_prospector_pick"
 	}
 }
