@@ -3,7 +3,7 @@
 	"category": "tools",
 	"key": {
 		"a": {
-			"item": "minecraft:diamond"
+			"item": "minecraft:iron_ingot"
 		},
 		"c": {
 			"item": "minecraft:stick"
@@ -15,6 +15,6 @@
 	" c "
 	],
 	"result": {
-		"item": "prospectingpicks:diamond_prospector_pick"
+		"id": "prospectingpicks:iron_prospector_pick"
 	}
 }
